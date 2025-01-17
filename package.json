@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "discord.js": "^14.17.3",
+    "dotenv": "^16.4.7"
+  },
+  "name": "bot",
+  "version": "1.0.0",
+  "main": "main.ts",
+  "scripts": {
+    "start": "node main.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
