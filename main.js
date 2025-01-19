@@ -53,11 +53,11 @@ client.on("messageCreate", (message) => {
             
             } else if (fixedUrls.length > 1) {
                 // If there are multiple links, format each one as [1], [2], [3], etc.
-                const formattedLinks = fixedUrls.map((url, index) => `[[${index + 1}]](${url})`).join(' ');
-            
+                const formattedLinks = fixedUrls.map((url, index) => `[${index + 1}](${url})`).join(' ');
+
                 // Manually remove the original URLs from the textPart
                 const cleanedTextPart = parts.filter(part => !part.includes("x.com") && !part.includes("twitter.com")).join(' ').trim();
-            
+
                 // Send only the formatted links and any cleaned text, ignoring the original raw URLs
                 const messageToSend = `${cleanedTextPart ? `> ${cleanedTextPart}` : ""}\n\n Sent by <@${message.author.id}> | ${formattedLinks}`;
                 message.channel.send(messageToSend);
@@ -87,5 +87,5 @@ client.on("messageCreate", (message) => {
         if (rolledNumber === 1) {
             message.channel.send("# DUCK ELSKER FUWAMOCO");
         }
-    } 
+    }
 });
