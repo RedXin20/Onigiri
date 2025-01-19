@@ -88,4 +88,7 @@ client.on("messageCreate", (message) => {
             message.channel.send("# DUCK ELSKER FUWAMOCO");
         }
     }
+    if (message.content.toLowerCase().includes("zmdj")) {
+        message.channel.send("hi");
+    }
 });
