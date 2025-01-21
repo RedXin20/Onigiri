@@ -29,20 +29,24 @@ client.on("messageCreate", (message) => {
 
     // Check if the message contains a URL
     if (url.includes("https://")) {
+
         // Check if the URL contains x.com or twitter.com
         if (url.includes("x.com") || url.includes("twitter.com")) {
             const parts = message.content.split(" ");
 
-            // Filter out URLs for "www.twitter.com" or "twitter.com" that are standalone
+            // Filter out the twitter and x URLs if they are not tied to a post
             let urlsPart = parts.filter(part => 
                 (part.includes("x.com") || part.includes("twitter.com")) &&
-                !["https://twitter.com/", "https://www.twitter.com/", "https://x.com/", "https://www.x.com/"].includes(part)
-            );
-
+                !["https://twitter.com/", "https://www.twitter.com/", "https://twitter.com", "https://www.twitter.com", 
+                    "https://x.com/", "https://www.x.com/", "https://x.com", "https://www.x.com"].includes(part)
+              );
+              
+            // Console log in terminal the no post url
             if (urlsPart.length === 0) {
                 console.log("No changes needed (no post)");
                 return;
             }
+
             let textPart = parts.filter(part => !part.includes("x.com") && !part.includes("twitter.com")).join(" "); // Get the rest of the message text
             
             let fixedUrls = [];
