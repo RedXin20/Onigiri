@@ -22,7 +22,7 @@ client.on("messageCreate", (message) => {
     const url = message.content.toLowerCase();
 
     // Check if the message contains the target link (fixupx.com)
-    if (url.includes("fixupx.com") || url.includes("vxtwitter.com")) {
+    if (url.includes("fixupx.com") || url.includes("vxtwitter.com") || url.includes("ssstwitter.com")) {
         console.log("No changes needed");
         return;
     }
@@ -32,8 +32,17 @@ client.on("messageCreate", (message) => {
         // Check if the URL contains x.com or twitter.com
         if (url.includes("x.com") || url.includes("twitter.com")) {
             const parts = message.content.split(" ");
-            
-            let urlsPart = parts.filter(part => part.includes("x.com") || part.includes("twitter.com"));
+
+            // Filter out URLs for "www.twitter.com" or "twitter.com" that are standalone
+            let urlsPart = parts.filter(part => 
+                (part.includes("x.com") || part.includes("twitter.com")) &&
+                !["https://twitter.com/", "https://www.twitter.com/", "https://x.com/", "https://www.x.com/"].includes(part)
+            );
+
+            if (urlsPart.length === 0) {
+                console.log("No changes needed (no post)");
+                return;
+            }
             let textPart = parts.filter(part => !part.includes("x.com") && !part.includes("twitter.com")).join(" "); // Get the rest of the message text
             
             let fixedUrls = [];
