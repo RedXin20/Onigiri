@@ -144,8 +144,8 @@ client.on("messageCreate", (message) => {
             message.channel.send("# DUCK ER SÅ BAUBAU~ ♡");
         }
     }
-    
-    if (message.content === ("TODO")) {
+
+    if (message.content === "TODO") {
         message.channel.send("1. Redisgn the code\n 2. Fix edge cases")
     }
 });
