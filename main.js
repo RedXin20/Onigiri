@@ -22,7 +22,7 @@ client.on("messageCreate", (message) => {
     const url = message.content.toLowerCase();
 
     // Check if the message contains the target link (fixupx.com)
-    if (url.includes("fixupx.com") || url.includes("vxtwitter.com") || url.includes("ssstwitter.com") || url.includes("fxtwitter.com")) {
+    if (url.includes("fixupx.com") || url.includes("vxtwitter.com") || url.includes("ssstwitter.com") || url.includes("fxtwitter.com") || url.includes("roblox.com")) {
         console.log("No changes needed");
         return;
     }
