@@ -138,14 +138,10 @@ client.on("messageCreate", (message) => {
     }
 
     if (message.content.toLowerCase().includes("duck")) {
-        const rolledNumber = Math.floor(Math.random() * 10) + 1;
+        const rolledNumber = Math.floor(Math.random() * 1000) + 1;
 
         if (rolledNumber === 1) {
             message.channel.send("# DUCK ER SÅ BAUBAU~ ♡");
         }
-    }
-
-    if (message.content === "TODO") {
-        message.channel.send("1. Redisgn the code\n 2. Fix edge cases")
     }
 });
