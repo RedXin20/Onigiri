@@ -52,7 +52,8 @@ function handleMessage(message) {
         });
     }
 
-    // Instragram 
+    // Instragram, doesn't work currently cause no player
+    /*
     if (url.includes("instagram.com") || url.includes("www.instagram.com")) {
         const parts2 = message.content.split(" ");
         const urlsPart2 = parts2.filter(part =>
@@ -87,6 +88,7 @@ function handleMessage(message) {
             }
         });
     }
+    */
 
     // Chat related commands 
     if (message.content === "tjaapa") {

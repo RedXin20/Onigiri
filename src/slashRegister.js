@@ -1,7 +1,5 @@
-// deploy-commands.js
 require("dotenv").config({ path: "../.env" });
 const { REST, Routes } = require("discord.js");
-const raidCommand = require("./WoW/raidEmbed"); // adjust path as needed
 
 const commands = [raidCommand.data.toJSON()];
 

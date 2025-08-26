@@ -2,7 +2,6 @@ require("dotenv").config();
 
 const { Client, GatewayIntentBits } = require("discord.js");
 const handleMessage = require("./messageHandler");
-const raidCommand = require("./WoW/raidEmbed");
 
 const client = new Client({
     intents: [
@@ -18,9 +17,17 @@ client.login(process.env.DISCORD_KEY)
     client.on("messageCreate", handleMessage);
 
     client.on("interactionCreate", async interaction => {
-        if (!interaction.isChatInputCommand()) return;
+        if (interaction.isChatInputCommand()) {
+            if (interaction.commandName === "raid") {
+                await raidCommand.execute(interaction);
+            }
+        }
     
-        if (interaction.commandName === "raid") {
-            await raidCommand.execute(interaction);
+        if (interaction.isButton()) {
+            if (interaction.customId === "join_raid" || interaction.customId === "leave_raid") {
+                await raidCommand.handleButton(interaction); 
+            }
         }
     });
+    
+    
