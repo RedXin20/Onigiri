@@ -12,22 +12,23 @@ const client = new Client({
 });
 
 client.login(process.env.DISCORD_KEY)
-    .then(() => console.log("Logged in ✅"));
+    .then(() => console.log("Logged in!"))
+    .catch(err => console.error("Failed to log in :(", err));
 
     client.on("messageCreate", handleMessage);
 
     client.on("interactionCreate", async interaction => {
         if (interaction.isChatInputCommand()) {
-            if (interaction.commandName === "raid") {
-                await raidCommand.execute(interaction);
+            
+            // TryCatch for Alive
+            if (interaction.commandName === "alive") {
+                try {
+                    await interaction.reply("# Bau Bau ⁠♡")
+                } catch (err) {
+                    console.error("Error handling /amialive:", err);
+                if (!interaction.replied && !interaction.deferred) {
+                    await interaction.reply({ content: "Uuh… something went wrong ;w;", ephemeral: true });
+                }
             }
-        }
-    
-        if (interaction.isButton()) {
-            if (interaction.customId === "join_raid" || interaction.customId === "leave_raid") {
-                await raidCommand.handleButton(interaction); 
-            }
-        }
-    });
-    
-    
+    }}
+})
