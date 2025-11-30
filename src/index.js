@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: "../.env" });
 
 const { Client, GatewayIntentBits } = require("discord.js");
 const handleMessage = require("./messageHandler");
@@ -12,8 +12,7 @@ const client = new Client({
 });
 
 client.login(process.env.DISCORD_KEY)
-    .then(() => console.log("Logged in!"))
-    .catch(err => console.error("Failed to log in :(", err));
+    .then(() => console.log("Logged in!"));
 
     client.on("messageCreate", handleMessage);
 
@@ -25,10 +24,12 @@ client.login(process.env.DISCORD_KEY)
                 try {
                     await interaction.reply("# Bau Bau ⁠♡")
                 } catch (err) {
-                    console.error("Error handling /amialive:", err);
-                if (!interaction.replied && !interaction.deferred) {
-                    await interaction.reply({ content: "Uuh… something went wrong ;w;", ephemeral: true });
+                    console.error("Error handling /alive:", err);
+                    if (!interaction.replied && !interaction.deferred) {
+                        await interaction.reply({ content: "Uuh… something went wrong bau... ;w;", ephemeral: true 
+                        });
+                    }
                 }
             }
-    }}
-})
+        }
+});
