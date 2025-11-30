@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config();
 
 const { Client, GatewayIntentBits } = require("discord.js");
 const handleMessage = require("./messageHandler");
@@ -13,6 +13,7 @@ const client = new Client({
 
 client.login(process.env.DISCORD_KEY)
     .then(() => console.log("Logged in!"));
+
 
     client.on("messageCreate", handleMessage);
 
